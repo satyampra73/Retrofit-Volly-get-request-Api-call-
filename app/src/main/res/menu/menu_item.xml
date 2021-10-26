@@ -6,5 +6,20 @@
         android:icon="@drawable/ic_arrow"
         android:title="Next Activity"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/extra"
+        android:icon="@drawable/ic_check"
+        app:showAsAction="always"
+        android:title="explore"/>
+    <item
+        android:id="@+id/title1"
+        android:title="Title 1"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/title2"
+        android:title="Title 2 "
+        app:showAsAction="never"
+        />
+
 
 </menu>

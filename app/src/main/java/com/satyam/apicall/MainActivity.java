@@ -25,15 +25,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn;
-   private ListView lv_data;
-   private String url = "https://thebudgetpantry.com/api/v2/";
+    private ListView lv_data;
+    private String url = "https://thebudgetpantry.com/api/v2/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn = findViewById(R.id.button);
-        lv_data=findViewById(R.id.lv_data2);
+        lv_data = findViewById(R.id.lv_data2);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -55,18 +55,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<model>> call, Response<List<model>> response) {
                 List<model> data = response.body();
-                List<String>list=new ArrayList<>();
-                for (int i=0;i<data.size();i++){
-                    String info="name: "+data.get(i).name+"\n"+"payment type: "+data.get(i).payment_type+"\n"+"payment type key: "+data.get(i).payment_type_key+"\n"+"title: "+data.get(i).title;
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < data.size(); i++) {
+                    String info = "name: " + data.get(i).name + "\n" + "payment type: " + data.get(i).payment_type + "\n" + "payment type key: " + data.get(i).payment_type_key + "\n" + "title: " + data.get(i).title;
                     list.add(info);
                 }
-                ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,list);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, list);
                 lv_data.setAdapter(arrayAdapter);
             }
 
             @Override
             public void onFailure(Call<List<model>> call, Throwable t) {
-                Toast.makeText(MainActivity.this,"something ent wrong",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "something ent wrong", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -75,19 +75,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_item,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_item, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.chalo:
-                Intent intent=new Intent(MainActivity.this,getdata2.class);
+                Intent intent = new Intent(MainActivity.this, getdata2.class);
                 startActivity(intent);
                 return true;
-
+            case R.id.title1:
+                Toast.makeText(getApplicationContext(), "title 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.title2:
+                Toast.makeText(getApplicationContext(), "title 2 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.extra:
+               Intent intent1=new Intent(MainActivity.this,FrameLayout.class);
+               startActivity(intent1);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
